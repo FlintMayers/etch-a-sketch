@@ -2,7 +2,7 @@ $(document).ready(function(){
 
   function generateGrid( size = 30){
 		for(var i = 0; i < size; i++){
-		  $("#gridcontainer").append("<div class='row'>");
+		  $("#gridcontainer").append("<div class='row text-center'>");
 			for(var j = 0; j < size; j++){
 				$('.row').last().append("<div class='unit float'></div>");
 			}
@@ -14,12 +14,13 @@ $(document).ready(function(){
 
 	var color = 'white'
 
+	//reset button
 	$('#reset').on('click', function(){
-		// $('.unit').removeClass('color');
 		$('.unit').css('background-color', 'white');
 		color = 'white';
 	});
 
+	//change grid dimension button
 	$('#newGrid').on('click', function(){
 
 		var userValue = 0;
@@ -33,14 +34,15 @@ $(document).ready(function(){
 
 	});
 
+  // random color button
 	$('#randomColor').on('click', function(){
 		var hue = 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
-		// $('.color').css('background-color', hue);
 		color = hue;
+		$('.currentcolor').css('background-color', hue);
 	});
 
+	//paints grid items on mouse over
 	$('#gridcontainer').on('mouseover', 'div.unit', function(){
-		// $(this).addClass('color');
 		$(this).css('background-color', color);
 	});
 });
